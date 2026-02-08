@@ -12,11 +12,12 @@ export const userRelations = relations(user, ({ many }) => ({
 	chats: many(chat),
 	messageParticipants: many(chatParticipant),
 	deletedChat: many(messageDeletion),
+	messages: many(message),
 }));
 
 export const chatRelations = relations(chat, ({ many }) => ({
 	participants: many(chatParticipant),
-	message: many(message),
+	messages: many(message),
 }));
 
 export const chatParticipantRelations = relations(
@@ -44,6 +45,13 @@ export const messageRelations = relations(message, ({ one, many }) => ({
 		references: [user.id],
 	}),
 	deletedChat: many(messageDeletion),
+}));
+
+export const messageMediaRelations = relations(messageMedia, ({ one }) => ({
+	message: one(message, {
+		fields: [messageMedia.messageId],
+		references: [message.id],
+	}),
 }));
 
 export const messageDeletionRelations = relations(
