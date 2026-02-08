@@ -1,7 +1,9 @@
 import z from "zod";
 
-export const createMessageSchema = z.object({
-	userId: z.string().min(1),
+export const createTextOnlyMessageSchema = z.object({
+	text: z.string(),
 });
 
-export type CreateMessageSchemaType = z.infer<typeof createMessageSchema>;
+export type CreateTextOnlyMessageSchemaType = z.infer<
+	typeof createTextOnlyMessageSchema
+>;
