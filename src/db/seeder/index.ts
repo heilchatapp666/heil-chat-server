@@ -4,7 +4,7 @@ import userSeeder from "./user";
 
 async function main() {
 	await userSeeder();
-	// await chatSeeder();
+	await chatSeeder();
 }
 
 main()
