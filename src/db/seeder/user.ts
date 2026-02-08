@@ -11,11 +11,14 @@ export default async function userSeeder() {
 	const count = 30;
 	console.log(count, " of User number obtained...");
 	console.log("Creating user data...");
-	const userArray = Array.from({ length: count }).map(() => ({
-		name: faker.person.firstName(),
-		email: faker.internet.email(),
-		password: "password",
-	}));
+	const userArray = Array.from({ length: count }).map(() => {
+		const userName = faker.person.firstName().toLowerCase();
+		return {
+			name: userName,
+			email: `${userName}@example.com`,
+			password: "password",
+		};
+	});
 	console.log("User Data created...");
 	console.log("Inserting user data into database...");
 	for (const user of userArray) {
