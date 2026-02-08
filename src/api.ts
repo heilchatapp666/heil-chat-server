@@ -3,6 +3,7 @@ import db from "./db";
 import tables from "./db/tables";
 import authRouter from "./routes/auth";
 import chatRouter from "./routes/chat";
+import messageRouter from "./routes/message";
 import userRouter from "./routes/user";
 import type { AuthType } from "./types/auth";
 
@@ -27,5 +28,6 @@ api.route("/auth", authRouter);
 
 api.route("/users", userRouter);
 api.route("/chats", chatRouter);
+api.route("/messages", messageRouter);
 
 export default api;
