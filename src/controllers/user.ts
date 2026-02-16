@@ -10,10 +10,10 @@ export const getAllUsers = async (c: Context) => {
 		);
 	}
 	const users = await db.query.user.findMany({
-		where: (table, { or, eq, ilike }) => {
+		where: (table, { or, eq, like }) => {
 			return or(
-				ilike(table.name, `%${query}`),
-				ilike(table.email, `%${query}`),
+				like(table.name, `%${query}%`),
+				like(table.email, `%${query}%`),
 				eq(table.id, query),
 			);
 		},
